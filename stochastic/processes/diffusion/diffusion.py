@@ -113,6 +113,8 @@ class DiffusionProcess(GaussianNoise):
                 self._speed(t) * (self._mean(t) - initial) * delta_t
                 + self._vol(t) * initial ** self._volexp(initial) * gns[k]
             )
+            if(initial < 0):
+                initial = 0
             s.append(initial)
 
         return np.array(s)
